@@ -1,44 +1,73 @@
 import { StatusBar } from 'expo-status-bar';
+import { React, useState } from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 
-
-
 export default function App() {
+  const [valor1, setValor1] = useState();
+  const [valor2, setValor2] = useState();
+  const [resultado, setResultado] = useState(0);
+
+  function somar(){
+    setResultado(parseFloat(valor1) + parseFloat(valor2));
+  }
+
   return (
     <View style={styles.container}>
+
       <Text style={styles.texto}>Olá mundo!</Text>
       <View style={styles.bloco}>
         <Text style={styles.textBlock}>Valor 1</Text>
-        <TextInput
-        style={styles.input}
+        <TextInput style={styles.input}
         keyboardType="numeric"
+        value={valor1}
+        onChangeText={(texto)=>setValor1(texto)}
         />
     </View>
+
     <View style={styles.bloco}>
         <Text style={styles.textBlock}>Valor 2</Text>
         <TextInput
         style={styles.input}
         keyboardType="numeric"
+        value={valor2}
+        onChangeText={(texto)=>setValor2(texto)}
         />
       </View>
       <View style={styles.bloco}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity 
+        style = {styles.button}
+            onPress={somar}>
+
           <Text style={styles.textButton}>Somar</Text>
         </TouchableOpacity>
+        </View>
+
+        <View style={styles.bloco}> 
+          <Text style={styles.textoBloco}> Resultado: {resultado} </Text>
+        </View>
+
       </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#363636',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  textoBloco: {
+  fontSize: 20,
+  marginTop : 10,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  },
+
   texto:{
-    color: '#00FF7F',
+    color: '#00FFF',
     fontSize:30
   }, 
 
@@ -50,19 +79,19 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    borderColor: '#FFF',
+    borderColor: '#000',
     borderWidth: 2,
-    fontSize: 30,
+    fontSize: 20,
     width: '80%',
-    color: '#fff',
+    color: '#000',
   },
   textBlock: {
-    color: '#FFF',
+    color: '#000',
     fontSize: 20,
   },
   button: {
     textAlign: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#DCDCDC',
     width: '80%',
     borderRadius: 5,
   },
