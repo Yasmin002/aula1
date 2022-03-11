@@ -11,10 +11,22 @@ export default function App() {
     setResultado(parseFloat(valor1) + parseFloat(valor2));
   }
 
+  function subtrair(){
+    setResultado(parseFloat(valor1) - parseFloat(valor2));
+  }
+
+  function multiplicar(){
+    setResultado(parseFloat(valor1) * parseFloat(valor2));
+  }
+
+  function dividir(){
+    setResultado(parseFloat(valor1) / parseFloat(valor2));
+  }
+
   return (
     <View style={styles.container}>
 
-      <Text style={styles.texto}>Olá mundo!</Text>
+      <Text style={styles.texto}>Calculadora</Text>
       <View style={styles.bloco}>
         <Text style={styles.textBlock}>Valor 1</Text>
         <TextInput style={styles.input}
@@ -39,6 +51,24 @@ export default function App() {
             onPress={somar}>
 
           <Text style={styles.textButton}>Somar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style = {styles.button}
+            onPress={subtrair}>
+
+          <Text style={styles.textButton}>Subtrair</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style = {styles.button}
+            onPress={dividir}>
+
+          <Text style={styles.textButton}>Dividir</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style = {styles.button}
+            onPress={multiplicar}>
+
+          <Text style={styles.textButton}>Multiplicar</Text>
         </TouchableOpacity>
         </View>
 
@@ -91,10 +121,11 @@ const styles = StyleSheet.create({
   },
   button: {
     textAlign: 'center',
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#88CFE7',
     width: '80%',
     borderRadius: 5,
-  },
+    padding: 15,
+    margin: 15 },
   textButton: {
     color: '#000',
     fontSize: 20,
